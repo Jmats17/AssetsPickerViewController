@@ -19,14 +19,14 @@ class AssetsPickerManager: NSObject {
     fileprivate var successCallback: ((Any?) -> Void)?
     fileprivate var cancelCallback: (() -> Void)?
     
-    private let allowsEditing: Bool
+    private var allowsEditing: Bool = false
     fileprivate var savedLocalIdentifier: String?
     
     var isAutoSave: Bool = true
     weak var delegate: AssetsPickerManagerDelegate?
-    
-    init(allowsEditing: Bool = false) {
-      self.allowsEditing = allowsEditing
+
+    func setAllowsEditing(shouldAllow: Bool) {
+      self.allowsEditing = shouldAllow
     }
   
     func requestTakePhoto(parent: UIViewController, success: ((Any?) -> Void)? = nil, cancel: (() -> Void)? = nil) {
